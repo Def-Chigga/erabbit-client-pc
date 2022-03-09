@@ -1,4 +1,4 @@
-# demo
+# erabbit-client-pc
 
 ## Project setup
 ```
