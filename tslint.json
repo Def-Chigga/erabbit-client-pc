@@ -1,0 +1,24 @@
+{
+  "defaultSeverity": "warning",
+  "extends": [
+    "tslint:recommended"
+  ],
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**",
+      "package.json"
+    ]
+  },
+  "rules": {
+    "indent": [true, "spaces", 2], // 一个缩进必须用两个个空格替代
+    "interface-name": false, // 声明interface是否需要首字母为大写的I
+    "no-consecutive-blank-lines": [ true, 3 ], // 静止连续超过三行空行
+    "object-literal-sort-keys": false, // 检查对象 key 的声明顺序
+    "ordered-imports": false, // 不需要按字母顺序引入模块
+    "quotemark": [true, "single"], // 使用单引号
+    "semicolon": [false, "always"], // 静止行尾有分号
+    "no-trailing-whitespace": false, // 禁止行尾有空格
+    "trailing-comma": false, // 静止行尾有逗号
+    "no-console": false // 允许有console.log
+  }
+}

@@ -1,0 +1,161 @@
+@import "variable";
+
+/* 超出行数变为... */
+@mixin clampN($index){
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:$index;
+}
+/* 水平垂直定位居中 */
+@mixin posCenterXY(){
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+/* 水平定位居中 */
+@mixin posCenterX(){
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+/* 垂直定位居中 */
+@mixin posCenterY(){
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+/* flex伸缩布局 水平方向 垂直居中*/
+@mixin flexRow(){
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+/* flex伸缩布局 垂直方向*/
+@mixin flexCol(){
+  display: flex;
+  flex-direction: column;
+}
+/* flex伸缩布局 水平方向 垂直居中 换行 */
+@mixin flexRowWrap(){
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+/* flex伸缩布局 水平垂直居中*/
+@mixin flexRowCenter(){
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+/* flex伸缩布局 水平垂直居中*/
+@mixin flexColCenter(){
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/* flex伸缩布局 水平居中 垂直两端对齐*/
+@mixin flexColSb(){
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+/* flex伸缩布局 space-between 并居中*/
+@mixin flexSb() {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+/* flex伸缩布局 space-between 并居中*/
+@mixin flexSbWrap() {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+/* flex伸缩布局 space-around 并居中*/
+@mixin flexSa() {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}
+
+/*grid网格布局 几行几列等比*/
+@mixin gridRowCol($row: 1, $col: 1, $gap: 0) {
+  display: grid;
+  grid-template-rows: repeat($row, 1fr);
+  grid-template-columns: repeat($col, 1fr);
+  gap: $gap;
+}
+
+/* 设置输入框placeholder值样式*/
+@mixin phStyle($color: #333, $fs: 16px) {
+  input::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: $color;
+    font-size: $fs;
+  }
+  input:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: $color;
+    font-size: $fs;
+  }
+  input::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: $color;
+    font-size: $fs;
+  }
+  input:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: $color;
+    font-size: $fs;
+  }
+}
+
+/* 设置滚动条样式 给需要设置滚动条的容器添加类名 scroller*/
+@mixin scrollStyle($width: 8px, $height: 8px, $trackBg: #F5F5F5, $thumbBg: #c8c8c8){
+  .scroller::-webkit-scrollbar {
+    width: $width;
+    height: $height;
+  }
+
+  /*定义滚动条轨道*/
+  .scroller::-webkit-scrollbar-track {
+    background-color:$trackBg;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius:2em;
+  }
+  /*定义滑块*/
+  .scroller::-webkit-scrollbar-thumb {
+    background-color:$thumbBg;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius:2em;
+  }
+}
+
+/* 实现实心三角形*/
+@mixin triangle($dir: Down, $width: 8px, $color: #FFF){ // 方向 边框宽度 颜色
+  width: 0;
+  height: 0;
+  border-width: $width;
+  border-style: solid;
+  @if($dir == Up){
+    border-color: transparent transparent $color transparent;
+  }@else if($dir == Down){
+    border-color: $color transparent transparent transparent;
+  }@else if($dir == Left){
+    border-color: transparent $color transparent transparent;
+  }@else if($dir == Right){
+    border-color: transparent transparent transparent $color;
+  }
+}
